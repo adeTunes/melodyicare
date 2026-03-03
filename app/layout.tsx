@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "home care",
     "nursing",
     "melodyicare",
+    "MelodyiCare",
   ],
   authors: [{ name: "MelodyiCare" }],
   viewport: "width=device-width, initial-scale=1",
@@ -59,11 +60,11 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "MelodyiCare | Professional Care Services in Lagos",
     description:
       "Empowering families to live with comfort, dignity, and peace of mind.",
-    images: ["/og-square.png"],
+    images: ["/og-image.png", "/og-square.png"],
   },
 };
 
