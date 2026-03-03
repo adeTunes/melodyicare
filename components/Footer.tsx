@@ -27,8 +27,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-white/10 pb-16">
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
-                <Heart size={24} fill="currentColor" />
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center p-2 overflow-hidden">
+                <img
+                  src="/logo.png"
+                  alt="MelodyICare Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-2xl font-heading font-bold tracking-tight text-white">
                 Melody<span className="text-secondary">ICare</span>

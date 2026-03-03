@@ -35,8 +35,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-            <Heart size={24} fill="currentColor" />
+          <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center p-2 group-hover:scale-110 transition-transform overflow-hidden">
+            <img
+              src="/logo.png"
+              alt="MelodyICare Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="text-2xl font-heading font-bold tracking-tight text-primary">
             Melody<span className="text-secondary">ICare</span>
