@@ -38,7 +38,7 @@ export default function Navbar() {
           <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center p-2 group-hover:scale-110 transition-transform overflow-hidden">
             <img
               src="/logo.png"
-              alt="MelodyICare Logo"
+              alt="MelodyiCare Logo"
               className="w-full h-full object-contain"
             />
           </div>

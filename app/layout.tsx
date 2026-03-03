@@ -13,7 +13,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "MelodyICare | Caring, Compassion and Comfort",
+  title: "MelodyiCare | Caring, Compassion and Comfort",
   description:
     "Premium care service agency committed to delivering personalized, professional and compassionate support to individuals and families in Lagos, Nigeria.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "nursing",
     "melodyicare",
   ],
-  authors: [{ name: "MelodyICare" }],
+  authors: [{ name: "MelodyiCare" }],
   viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon/favicon.ico",
@@ -38,25 +38,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_NG",
     url: "https://melodyicare.com",
-    siteName: "MelodyICare",
-    title: "MelodyICare | Professional Care Services in Lagos",
+    siteName: "MelodyiCare",
+    title: "MelodyiCare | Professional Care Services in Lagos",
     description:
       "Empowering families to live with comfort, dignity, and peace of mind.",
     images: [
       {
-        url: "/logo2.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "MelodyICare - Caring, Compassion and Comfort",
+        alt: "MelodyiCare - Caring, Compassion and Comfort",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MelodyICare | Professional Care Services in Lagos",
+    title: "MelodyiCare | Professional Care Services in Lagos",
     description:
       "Empowering families to live with comfort, dignity, and peace of mind.",
-    images: ["/logo2.png"],
+    images: ["/og-image.png"],
   },
 };
 

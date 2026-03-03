@@ -8,14 +8,14 @@ const testimonials = [
     name: "Dr. Funmi Adebayo",
     role: "Family Physician",
     content:
-      "MelodyICare has been a godsend for my elderly patients. Their caregivers are not just professional; they are deeply compassionate. I trust them completely with the transition of care from hospital to home.",
+      "MelodyiCare has been a godsend for my elderly patients. Their caregivers are not just professional; they are deeply compassionate. I trust them completely with the transition of care from hospital to home.",
     image: "/avatar-1.png",
   },
   {
     name: "Emeka Nwosu",
     role: "Son of Client",
     content:
-      "Finding a care agency that actually cares in Lagos was difficult until we found MelodyICare. They treat my father like their own family. The peace of mind they've given us is priceless.",
+      "Finding a care agency that actually cares in Lagos was difficult until we found MelodyiCare. They treat my father like their own family. The peace of mind they've given us is priceless.",
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200&h=200",
   },
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Chioma Okereke",
     role: "Busy Professional",
     content:
-      "As a working mom, balancing my career and my aging mother's needs was stressful. MelodyICare stepped in with their concierge service and handled everything. Their responsiveness is unmatched.",
+      "As a working mom, balancing my career and my aging mother's needs was stressful. MelodyiCare stepped in with their concierge service and handled everything. Their responsiveness is unmatched.",
     image:
       "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=200&h=200",
   },

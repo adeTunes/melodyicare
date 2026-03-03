@@ -30,7 +30,7 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center p-2 overflow-hidden">
                 <img
                   src="/logo.png"
-                  alt="MelodyICare Logo"
+                  alt="MelodyiCare Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -39,7 +39,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed text-white/60 italic">
-              "MelodyICare exists to ensure that no one feels forgotten,
+              "MelodyiCare exists to ensure that no one feels forgotten,
               overwhelmed or unsupported. We step in where life becomes heavy
               and carry it with care."
             </p>
@@ -161,7 +161,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-white/40">
           <p>
-            © {new Date().getFullYear()} MelodyICare Services. All rights
+            © {new Date().getFullYear()} MelodyiCare Services. All rights
             reserved.
           </p>
           <button

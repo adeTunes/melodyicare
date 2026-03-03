@@ -45,7 +45,7 @@ export default function Recruitment() {
               </div>
 
               <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight">
-                Join <span className="text-primary italic">MelodyICare</span> as
+                Join <span className="text-primary italic">MelodyiCare</span> as
                 a Care-Provider
               </h2>
 
@@ -135,7 +135,7 @@ export default function Recruitment() {
               <div className="relative rounded-4xl overflow-hidden aspect-4/5 shadow-lg border-2 border-white">
                 <img
                   src="/recruitment-team.png"
-                  alt="MelodyICare Team"
+                  alt="MelodyiCare Team"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-primary/60 via-transparent to-transparent" />

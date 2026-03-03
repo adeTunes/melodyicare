@@ -26,7 +26,7 @@ const faqs = [
       "Absolutely. We believe in building trust early. After our initial assessment, we introduce potential caregivers to the family to ensure there is a good personality match and comfort level.",
   },
   {
-    question: "How do I get started with MelodyICare?",
+    question: "How do I get started with MelodyiCare?",
     answer:
       "The easiest way is to message us via WhatsApp or email. We will schedule a free initial consultation to understand your needs and design a personalized care plan.",
   },
