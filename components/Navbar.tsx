@@ -57,7 +57,7 @@ export default function Navbar() {
           <Link
             href="https://wa.me/2349039182206"
             target="_blank"
-            className="px-6 py-2.5 bg-primary text-white rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md hover:shadow-lg active:scale-95"
+            className="px-6 py-2.5 bg-primary text-white rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-sm hover:shadow-md active:scale-95"
           >
             Message Us
           </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 glass border-t border-border p-6 shadow-xl md:hidden"
+            className="absolute top-full left-0 right-0 glass border-t border-border p-6 shadow-lg md:hidden"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -95,7 +95,7 @@ export default function Navbar() {
               <Link
                 href="https://wa.me/2349039182206"
                 target="_blank"
-                className="mt-2 w-full py-3 bg-primary text-white rounded-xl text-center font-bold shadow-md"
+                className="mt-2 w-full py-3 bg-primary text-white rounded-xl text-center font-bold shadow-sm"
                 onClick={() => setIsOpen(false)}
               >
                 Message Us Now

@@ -41,7 +41,7 @@ export default function Hero() {
             <Link
               href="https://wa.me/2349039182206"
               target="_blank"
-              className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full text-lg font-bold hover:bg-primary/90 transition-all shadow-xl hover:shadow-primary/25 hover:scale-[1.02] active:scale-95 group w-full sm:w-auto justify-center"
+              className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full text-lg font-bold hover:bg-primary/90 transition-all shadow-md hover:shadow-primary/20 hover:scale-[1.02] active:scale-95 group w-full sm:w-auto justify-center"
             >
               <MessageSquare size={20} />
               Message Us Now
@@ -81,7 +81,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative"
         >
-          <div className="relative rounded-4xl overflow-hidden shadow-2xl border-8 border-white group">
+          <div className="relative rounded-4xl overflow-hidden shadow-lg border-4 border-white group">
             {/* Using a placeholder for now, ideally user's images should be here */}
             <div className="aspect-4/5 bg-muted flex items-center justify-center">
               <img
@@ -98,7 +98,7 @@ export default function Hero() {
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
-            className="absolute -bottom-10 -left-10 glass p-6 rounded-2xl shadow-xl max-w-xs hidden md:block"
+            className="absolute -bottom-10 -left-10 glass p-6 rounded-2xl shadow-md max-w-xs hidden md:block"
           >
             <p className="text-primary font-bold mb-1 italic">
               "Caring, Compassion and Comfort"

@@ -109,7 +109,7 @@ export default function Recruitment() {
                 <Link
                   href="https://wa.me/2349039182206"
                   target="_blank"
-                  className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-[1.02] active:scale-95 group"
+                  className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-white rounded-full text-lg font-bold hover:shadow-xl hover:shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95 group"
                 >
                   <MessageSquare size={24} />
                   Apply via WhatsApp
@@ -132,9 +132,9 @@ export default function Recruitment() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative rounded-4xl overflow-hidden aspect-4/5 shadow-2xl border-4 border-white">
+              <div className="relative rounded-4xl overflow-hidden aspect-4/5 shadow-lg border-2 border-white">
                 <img
-                  src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&q=80&w=2000"
+                  src="/recruitment-team.png"
                   alt="MelodyICare Team"
                   className="w-full h-full object-cover"
                 />
@@ -153,7 +153,7 @@ export default function Recruitment() {
                 whileInView={{ scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", damping: 15, delay: 0.5 }}
-                className="absolute -top-10 -right-10 w-40 h-40 bg-accent rounded-full flex items-center justify-center text-center p-4 border-4 border-white shadow-xl rotate-12"
+                className="absolute -top-10 -right-10 w-40 h-40 bg-accent rounded-full flex items-center justify-center text-center p-4 border-4 border-white shadow-lg rotate-12"
               >
                 <p className="text-accent-foreground font-bold text-lg leading-tight">
                   CAREERS AT MELODYICARE

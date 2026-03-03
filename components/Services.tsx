@@ -90,7 +90,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`p-8 rounded-4xl border border-border hover:border-primary/30 transition-all shadow-sm hover:shadow-xl group hover:-translate-y-2 ${service.color}`}
+              className={`p-8 rounded-4xl border border-border hover:border-primary/20 transition-all shadow-sm hover:shadow-md group hover:-translate-y-1 ${service.color}`}
             >
               <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-md mb-6 group-hover:scale-110 transition-transform">
                 {service.icon}
@@ -120,7 +120,7 @@ export default function Services() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-20 p-12 rounded-[3rem] glass flex flex-col lg:flex-row items-center justify-between gap-8 border-primary/10 shadow-lg relative overflow-hidden"
+          className="mt-20 p-12 rounded-[3rem] glass flex flex-col lg:flex-row items-center justify-between gap-8 border-primary/5 shadow-md relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           <div className="relative z-10 space-y-4">

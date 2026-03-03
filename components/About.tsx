@@ -91,10 +91,10 @@ export default function About() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative rounded-[3rem] overflow-hidden aspect-square shadow-2xl"
+            className="relative rounded-[3rem] overflow-hidden aspect-square shadow-lg"
           >
             <img
-              src="https://images.unsplash.com/photo-1573497620053-ea5310f94a17?auto=format&fit=crop&q=80&w=2000"
+              src="/about-care.png"
               alt="Professional care service"
               className="w-full h-full object-cover"
             />
