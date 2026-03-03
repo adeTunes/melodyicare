@@ -46,25 +46,25 @@ export const metadata: Metadata = {
       "Empowering families to live with comfort, dignity, and peace of mind.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "MelodyiCare - Caring, Compassion and Comfort",
-      },
-      {
-        url: "/og-square.png",
+        url: "/og-square.jpg",
         width: 500,
         height: 500,
         alt: "MelodyiCare Logo",
       },
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MelodyiCare - Caring, Compassion and Comfort",
+      },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "MelodyiCare | Professional Care Services in Lagos",
     description:
       "Empowering families to live with comfort, dignity, and peace of mind.",
-    images: ["/og-image.png", "/og-square.png"],
+    images: ["/og-square.jpg"],
   },
 };
 
