@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Empowering families to live with comfort, dignity, and peace of mind.",
     images: [
       {
-        url: "/hero-care.png",
+        url: "/logo2.png",
         width: 1200,
         height: 630,
         alt: "MelodyICare - Caring, Compassion and Comfort",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "MelodyICare | Professional Care Services in Lagos",
     description:
       "Empowering families to live with comfort, dignity, and peace of mind.",
-    images: ["/hero-care.png"],
+    images: ["/logo2.png"],
   },
 };
 
