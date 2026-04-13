@@ -12,6 +12,7 @@ import { useAuth } from '@/lib/hooks/useAuth'
 import { useVisit } from '@/lib/hooks/client/useVisits'
 import { useFeedbackByVisit } from '@/lib/hooks/client/useFeedback'
 import { createDocument } from '@/lib/firebase/firestore'
+import { logAudit } from '@/lib/firebase/audit'
 import { feedbackSchema, type FeedbackFormData } from '@/lib/validations/feedback'
 
 import { PageHeader } from '@/components/layout/PageHeader'
@@ -116,6 +117,7 @@ export default function SubmitFeedbackPage() {
         isAnonymous: data.isAnonymous,
       })
 
+      logAudit({ actorId: user.uid, actorRole: 'client', action: 'submit_feedback', targetCollection: 'feedback', targetId: visit.id })
       toast.success('Thank you for your feedback!')
       router.push('/client/feedback')
     } catch {

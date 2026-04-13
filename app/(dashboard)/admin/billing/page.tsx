@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { CreditCard, Search } from 'lucide-react'
+import { CreditCard, Plus, Search } from 'lucide-react'
 
 import { useAllInvoices } from '@/lib/hooks/admin/useAdminData'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { StatsCard } from '@/components/shared/StatsCard'
+import { Button } from '@/components/ui/button'
 import { LoadingTable } from '@/components/shared/LoadingState'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
@@ -43,7 +44,12 @@ export default function AdminBillingPage() {
 
   return (
     <div className='space-y-6'>
-      <PageHeader title='Billing' description='Invoice management' />
+      <div className='flex items-center justify-between'>
+        <PageHeader title='Billing' description='Invoice management' />
+        <Button render={<Link href='/admin/billing/new' />}>
+          <Plus className='mr-2 size-4' /> Create Invoice
+        </Button>
+      </div>
 
       <div className='grid gap-4 sm:grid-cols-3'>
         <StatsCard title='Total Paid' value={`₦${totalPaid.toLocaleString()}`} icon={DollarSign} />

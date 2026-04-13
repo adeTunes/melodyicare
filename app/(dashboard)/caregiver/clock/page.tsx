@@ -10,6 +10,7 @@ import { formatTimestamp } from '@/lib/utils'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useCaregiverUpcomingVisits } from '@/lib/hooks/caregiver/useVisits'
 import { updateDocument } from '@/lib/firebase/firestore'
+import { logAudit } from '@/lib/firebase/audit'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingTable } from '@/components/shared/LoadingState'
@@ -33,6 +34,7 @@ export default function ClockPage() {
         status: 'in-progress',
         clockInTime: Timestamp.now(),
       })
+      if (user) logAudit({ actorId: user.uid, actorRole: 'caregiver', action: 'clock_in', targetCollection: 'visits', targetId: visitId })
       toast.success('Clocked in successfully!')
       refetch()
     } catch {
@@ -49,6 +51,7 @@ export default function ClockPage() {
         status: 'completed',
         clockOutTime: Timestamp.now(),
       })
+      if (user) logAudit({ actorId: user.uid, actorRole: 'caregiver', action: 'clock_out', targetCollection: 'visits', targetId: visitId })
       toast.success('Clocked out successfully!')
       refetch()
     } catch {

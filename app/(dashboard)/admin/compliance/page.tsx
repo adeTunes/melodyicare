@@ -5,6 +5,8 @@ import { Shield, Search } from 'lucide-react'
 
 import { useAllIncidents } from '@/lib/hooks/admin/useAdminData'
 import { updateDocument } from '@/lib/firebase/firestore'
+import { logAudit } from '@/lib/firebase/audit'
+import { useAuth } from '@/lib/hooks/useAuth'
 import { toast } from 'sonner'
 import { formatTimestamp } from '@/lib/utils'
 
@@ -34,6 +36,7 @@ const SEVERITY_COLORS: Record<string, string> = {
 const STATUS_TABS = ['all', 'open', 'under-review', 'resolved', 'closed'] as const
 
 export default function CompliancePage() {
+  const { user } = useAuth()
   const { data: incidents, isLoading, refetch } = useAllIncidents()
   const [search, setSearch] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
@@ -53,6 +56,9 @@ export default function CompliancePage() {
         resolutionNotes,
         resolvedAt: new Date(),
       })
+      if (user) {
+        logAudit({ actorId: user.uid, actorRole: 'admin', action: 'resolve_incident', targetCollection: 'incidents', targetId: id, details: { resolutionNotes } })
+      }
       toast.success('Incident resolved.')
       setResolvingId(null)
       setResolutionNotes('')
@@ -111,7 +117,7 @@ export default function CompliancePage() {
                     <StatusBadge label={incident.severity} color={SEVERITY_COLORS[incident.severity] ?? 'bg-gray-100 text-gray-800'} />
                   </div>
                 </div>
-                {incident.status === 'open' && (
+                {incident.status !== 'closed' && (
                   <div className='mt-3 space-y-2'>
                     {resolvingId === incident.id ? (
                       <>
@@ -128,18 +134,37 @@ export default function CompliancePage() {
                       </>
                     ) : (
                       <div className='flex gap-2'>
-                        <Button size='sm' variant='outline' onClick={() => setResolvingId(incident.id)}>Resolve Incident</Button>
-                        <Button
-                          size='sm'
-                          variant='outline'
-                          onClick={async () => {
-                            await updateDocument('incidents', incident.id, { status: 'under-review' })
-                            toast.success('Marked as under review.')
-                            refetch()
-                          }}
-                        >
-                          Mark Under Review
-                        </Button>
+                        {incident.status !== 'resolved' && (
+                          <Button size='sm' variant='outline' onClick={() => setResolvingId(incident.id)}>Resolve Incident</Button>
+                        )}
+                        {incident.status === 'open' && (
+                          <Button
+                            size='sm'
+                            variant='outline'
+                            onClick={async () => {
+                              await updateDocument('incidents', incident.id, { status: 'under-review' })
+                              if (user) logAudit({ actorId: user.uid, actorRole: 'admin', action: 'mark_under_review', targetCollection: 'incidents', targetId: incident.id })
+                              toast.success('Marked as under review.')
+                              refetch()
+                            }}
+                          >
+                            Mark Under Review
+                          </Button>
+                        )}
+                        {(incident.status === 'under-review' || incident.status === 'resolved') && (
+                          <Button
+                            size='sm'
+                            variant='outline'
+                            onClick={async () => {
+                              await updateDocument('incidents', incident.id, { status: 'closed', closedAt: new Date() })
+                              if (user) logAudit({ actorId: user.uid, actorRole: 'admin', action: 'close_incident', targetCollection: 'incidents', targetId: incident.id })
+                              toast.success('Incident closed.')
+                              refetch()
+                            }}
+                          >
+                            Close Incident
+                          </Button>
+                        )}
                       </div>
                     )}
                   </div>

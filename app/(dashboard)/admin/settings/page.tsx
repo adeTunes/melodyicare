@@ -5,6 +5,8 @@ import { Save, Settings } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { getDocument, setDocument } from '@/lib/firebase/firestore'
+import { logAudit } from '@/lib/firebase/audit'
+import { useAuth } from '@/lib/hooks/useAuth'
 import type { SystemSettings } from '@/lib/types'
 
 import { PageHeader } from '@/components/layout/PageHeader'
@@ -24,6 +26,7 @@ const DEFAULT_SETTINGS: SystemSettings = {
 }
 
 export default function AdminSettingsPage() {
+  const { user } = useAuth()
   const [settings, setSettings] = useState<SystemSettings>(DEFAULT_SETTINGS)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -41,6 +44,7 @@ export default function AdminSettingsPage() {
     setSaving(true)
     try {
       await setDocument('systemSettings', 'global', settings)
+      if (user) logAudit({ actorId: user.uid, actorRole: 'admin', action: 'update_settings', targetCollection: 'systemSettings', targetId: 'global' })
       toast.success('Settings saved!')
     } catch {
       toast.error('Failed to save settings.')
