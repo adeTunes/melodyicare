@@ -7,7 +7,8 @@ import { ArrowLeft } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { useCarePlan } from '@/lib/hooks/admin/useAdminData'
-import { updateDocument } from '@/lib/firebase/firestore'
+import { useUser } from '@/lib/hooks/admin/useUsers'
+import { updateDocument, createDocument } from '@/lib/firebase/firestore'
 import { TASK_CATEGORIES } from '@/lib/constants'
 
 import { PageHeader } from '@/components/layout/PageHeader'
@@ -29,6 +30,52 @@ export default function AdminCarePlanDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { data: plan, isLoading, refetch } = useCarePlan(id)
   const [processing, setProcessing] = useState(false)
+  const [generating, setGenerating] = useState(false)
+
+  const { data: caregiverUser } = useUser(plan?.caregiverId)
+  const { data: clientUser } = useUser(plan?.clientId)
+
+  async function generateVisits() {
+    if (!plan || !plan.caregiverId || !clientUser || !caregiverUser) return
+    setGenerating(true)
+    try {
+      const startDate = new Date(plan.startDate)
+      const today = new Date()
+      const start = startDate > today ? startDate : today
+      const visitTasks = plan.tasks.map((t) => ({
+        taskId: t.id,
+        title: t.title,
+        category: t.category,
+        isCompleted: false,
+      }))
+
+      let created = 0
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(start)
+        d.setDate(d.getDate() + i)
+        const dateStr = d.toISOString().split('T')[0]
+        await createDocument('visits', {
+          carePlanId: plan.id,
+          clientId: plan.clientId,
+          clientName: `${clientUser.firstName} ${clientUser.lastName}`,
+          caregiverId: plan.caregiverId,
+          caregiverName: `${caregiverUser.firstName} ${caregiverUser.lastName}`,
+          scheduledDate: dateStr,
+          scheduledStartTime: plan.schedule.startTime ?? '08:00',
+          scheduledEndTime: plan.schedule.endTime ?? '16:00',
+          status: 'scheduled',
+          tasks: visitTasks,
+          complianceFlags: [],
+        })
+        created++
+      }
+      toast.success(`${created} visits generated for the next 7 days.`)
+    } catch {
+      toast.error('Failed to generate visits.')
+    } finally {
+      setGenerating(false)
+    }
+  }
 
   if (isLoading) return <LoadingCards />
   if (!plan) {
@@ -115,6 +162,11 @@ export default function AdminCarePlanDetailPage() {
         )}
         {plan.status === 'active' && (
           <>
+            {plan.caregiverId && (
+              <Button onClick={generateVisits} disabled={generating}>
+                {generating ? 'Generating...' : 'Generate Visits (7 days)'}
+              </Button>
+            )}
             <Button variant='outline' onClick={() => updateStatus('paused')} disabled={processing}>Pause</Button>
             <Button variant='outline' onClick={() => updateStatus('completed')} disabled={processing}>Complete</Button>
           </>

@@ -101,6 +101,7 @@ const adminNav: NavGroup[] = [
   {
     label: 'Care',
     items: [
+      { label: 'Care Requests', href: '/admin/care-requests', icon: Heart },
       { label: 'Care Plans', href: '/admin/care-plans', icon: ClipboardList },
       { label: 'Scheduling', href: '/admin/scheduling', icon: CalendarCheck },
       { label: 'Visits', href: '/admin/visits', icon: Calendar },

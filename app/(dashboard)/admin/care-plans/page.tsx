@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ClipboardList, Search } from 'lucide-react'
+import { ClipboardList, Plus, Search } from 'lucide-react'
 
 import { useAllCarePlans } from '@/lib/hooks/admin/useAdminData'
 
@@ -10,6 +10,7 @@ import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingTable } from '@/components/shared/LoadingState'
 import { EmptyState } from '@/components/shared/EmptyState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -36,7 +37,11 @@ export default function AdminCarePlansPage() {
 
   return (
     <div className='space-y-6'>
-      <PageHeader title='Care Plans' description='Manage all care plans' />
+      <PageHeader title='Care Plans' description='Manage all care plans'>
+        <Button render={<Link href='/admin/care-plans/new' />}>
+          <Plus className='mr-2 size-4' /> New Care Plan
+        </Button>
+      </PageHeader>
 
       <div className='flex flex-col sm:flex-row gap-4'>
         <div className='relative flex-1'>

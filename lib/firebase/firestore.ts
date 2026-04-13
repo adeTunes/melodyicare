@@ -29,7 +29,13 @@ function stripUndefined<T extends Record<string, unknown>>(obj: T): T {
   const clean = {} as Record<string, unknown>
   for (const [key, value] of Object.entries(obj)) {
     if (value === undefined) continue
-    if (value !== null && typeof value === 'object' && !Array.isArray(value) && !(value instanceof Timestamp)) {
+    if (Array.isArray(value)) {
+      clean[key] = value.map((item) =>
+        item !== null && typeof item === 'object' && !(item instanceof Timestamp)
+          ? stripUndefined(item as Record<string, unknown>)
+          : item
+      )
+    } else if (value !== null && typeof value === 'object' && !(value instanceof Timestamp)) {
       clean[key] = stripUndefined(value as Record<string, unknown>)
     } else {
       clean[key] = value
