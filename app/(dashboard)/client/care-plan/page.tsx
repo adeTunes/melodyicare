@@ -44,7 +44,7 @@ export default function CarePlansPage() {
                   <div className='space-y-1'>
                     <p className='font-medium'>{plan.title}</p>
                     <p className='text-sm text-muted-foreground'>
-                      {plan.tasks.length} tasks &middot; {plan.schedule.type} schedule
+                      {plan.tasks?.length ?? 0} tasks{plan.schedule?.type ? ` · ${plan.schedule.type} schedule` : ''}
                     </p>
                     <p className='text-xs text-muted-foreground'>
                       Started: {plan.startDate}

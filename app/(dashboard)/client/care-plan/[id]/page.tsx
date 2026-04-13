@@ -35,8 +35,9 @@ export default function CarePlanDetailPage() {
     )
   }
 
-  const requiredTasks = plan.tasks.filter((t) => t.isRequired)
-  const categorizedTasks = plan.tasks.reduce<Record<string, typeof plan.tasks>>((acc, task) => {
+  const tasks = plan.tasks ?? []
+  const requiredTasks = tasks.filter((t) => t.isRequired)
+  const categorizedTasks = tasks.reduce<Record<string, typeof tasks>>((acc, task) => {
     const cat = task.category.replace(/-/g, ' ')
     if (!acc[cat]) acc[cat] = []
     acc[cat].push(task)
@@ -65,13 +66,13 @@ export default function CarePlanDetailPage() {
         <Card>
           <CardHeader><CardTitle className='text-sm'>Schedule</CardTitle></CardHeader>
           <CardContent>
-            <p className='text-sm capitalize'>{plan.schedule.type}</p>
-            {plan.schedule.daysOfWeek && (
+            <p className='text-sm capitalize'>{plan.schedule?.type ?? '—'}</p>
+            {plan.schedule?.daysOfWeek && (
               <p className='text-xs text-muted-foreground mt-1'>
                 {plan.schedule.daysOfWeek.map((d) => DAYS[d]).join(', ')}
               </p>
             )}
-            {plan.schedule.startTime && plan.schedule.endTime && (
+            {plan.schedule?.startTime && plan.schedule?.endTime && (
               <p className='text-xs text-muted-foreground'>
                 {plan.schedule.startTime} – {plan.schedule.endTime}
               </p>
@@ -81,7 +82,7 @@ export default function CarePlanDetailPage() {
         <Card>
           <CardHeader><CardTitle className='text-sm'>Tasks</CardTitle></CardHeader>
           <CardContent>
-            <p className='text-2xl font-bold'>{plan.tasks.length}</p>
+            <p className='text-2xl font-bold'>{tasks.length}</p>
             <p className='text-xs text-muted-foreground'>
               {requiredTasks.length} required
             </p>

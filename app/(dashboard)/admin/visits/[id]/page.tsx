@@ -28,8 +28,10 @@ export default function AdminVisitDetailPage() {
     )
   }
 
-  const completedTasks = visit.tasks.filter((t) => t.isCompleted).length
-  const progressPercent = visit.tasks.length > 0 ? (completedTasks / visit.tasks.length) * 100 : 0
+  const tasks = visit.tasks ?? []
+  const complianceFlags = visit.complianceFlags ?? []
+  const completedTasks = tasks.filter((t) => t.isCompleted).length
+  const progressPercent = tasks.length > 0 ? (completedTasks / tasks.length) * 100 : 0
 
   return (
     <div className='space-y-6'>
@@ -70,12 +72,12 @@ export default function AdminVisitDetailPage() {
         <CardHeader>
           <div className='flex items-center justify-between'>
             <CardTitle className='text-base'>Tasks</CardTitle>
-            <span className='text-sm text-muted-foreground'>{completedTasks}/{visit.tasks.length}</span>
+            <span className='text-sm text-muted-foreground'>{completedTasks}/{tasks.length}</span>
           </div>
           <Progress value={progressPercent} className='mt-2' />
         </CardHeader>
         <CardContent className='space-y-2'>
-          {visit.tasks.map((task) => (
+          {tasks.map((task) => (
             <div key={task.taskId} className='flex items-center gap-3 rounded-md border p-2 text-sm'>
               {task.isCompleted ? <CheckCircle className='size-4 text-green-600' /> : <Circle className='size-4 text-muted-foreground' />}
               <span className={task.isCompleted ? 'line-through text-muted-foreground' : ''}>{task.title}</span>
@@ -91,12 +93,12 @@ export default function AdminVisitDetailPage() {
         </Card>
       )}
 
-      {visit.complianceFlags.length > 0 && (
+      {complianceFlags.length > 0 && (
         <Card>
           <CardHeader><CardTitle className='text-base'>Compliance Flags</CardTitle></CardHeader>
           <CardContent>
             <div className='flex flex-wrap gap-2'>
-              {visit.complianceFlags.map((flag) => (
+              {complianceFlags.map((flag) => (
                 <span key={flag} className='rounded-full bg-red-50 px-3 py-1 text-xs text-red-700'>{flag}</span>
               ))}
             </div>
