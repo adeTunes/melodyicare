@@ -6,6 +6,7 @@ import { AlertTriangle, Plus } from 'lucide-react'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useCaregiverIncidents } from '@/lib/hooks/caregiver/useIncidents'
 import { INCIDENT_SEVERITIES } from '@/lib/constants'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingTable } from '@/components/shared/LoadingState'
@@ -65,7 +66,7 @@ export default function IncidentsPage() {
                     <p className='font-medium'>{incident.title}</p>
                     <p className='text-sm text-muted-foreground'>
                       {incident.type.replace(/-/g, ' ')} &middot;{' '}
-                      {incident.createdAt.toDate().toLocaleDateString('en-NG')}
+                      {formatTimestamp(incident.createdAt)}
                     </p>
                     <p className='text-sm text-muted-foreground line-clamp-2'>
                       {incident.description}

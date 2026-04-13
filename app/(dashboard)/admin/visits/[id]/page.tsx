@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowLeft, CheckCircle, Circle, Clock } from 'lucide-react'
 
 import { useVisit } from '@/lib/hooks/admin/useAdminData'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingCards } from '@/components/shared/LoadingState'
@@ -55,11 +56,11 @@ export default function AdminVisitDetailPage() {
           <CardContent className='py-4 space-y-2 text-sm'>
             <div className='flex justify-between'>
               <span className='text-muted-foreground'>Clock In</span>
-              <span>{visit.clockInTime ? visit.clockInTime.toDate().toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' }) : '—'}</span>
+              <span>{visit.clockInTime ? formatTimestamp(visit.clockInTime, 'en-NG', { hour: '2-digit', minute: '2-digit' }) : '—'}</span>
             </div>
             <div className='flex justify-between'>
               <span className='text-muted-foreground'>Clock Out</span>
-              <span>{visit.clockOutTime ? visit.clockOutTime.toDate().toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' }) : '—'}</span>
+              <span>{visit.clockOutTime ? formatTimestamp(visit.clockOutTime, 'en-NG', { hour: '2-digit', minute: '2-digit' }) : '—'}</span>
             </div>
           </CardContent>
         </Card>

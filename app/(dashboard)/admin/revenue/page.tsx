@@ -3,6 +3,7 @@
 import { DollarSign, TrendingUp, CreditCard, Calendar } from 'lucide-react'
 
 import { useAllInvoices } from '@/lib/hooks/admin/useAdminData'
+import { safeDate } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { StatsCard } from '@/components/shared/StatsCard'
@@ -30,7 +31,8 @@ export default function RevenuePage() {
   const monthlyRevenue: Record<string, number> = {}
   paid.forEach((inv) => {
     if (inv.paidAt) {
-      const date = inv.paidAt.toDate()
+      const date = safeDate(inv.paidAt)
+      if (!date) return
       const key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
       monthlyRevenue[key] = (monthlyRevenue[key] ?? 0) + inv.total
     }

@@ -6,6 +6,7 @@ import { Clock, PlayCircle, StopCircle, CheckCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import { Timestamp } from 'firebase/firestore'
 
+import { formatTimestamp } from '@/lib/utils'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { useCaregiverUpcomingVisits } from '@/lib/hooks/caregiver/useVisits'
 import { updateDocument } from '@/lib/firebase/firestore'
@@ -110,10 +111,7 @@ export default function ClockPage() {
                       <div>
                         <p className='text-muted-foreground'>Clocked In</p>
                         <p className='font-medium text-green-600'>
-                          {visit.clockInTime.toDate().toLocaleTimeString('en-NG', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
+                          {formatTimestamp(visit.clockInTime, 'en-NG', { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
                     )}
@@ -121,10 +119,7 @@ export default function ClockPage() {
                       <div>
                         <p className='text-muted-foreground'>Clocked Out</p>
                         <p className='font-medium text-red-600'>
-                          {visit.clockOutTime.toDate().toLocaleTimeString('en-NG', {
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
+                          {formatTimestamp(visit.clockOutTime, 'en-NG', { hour: '2-digit', minute: '2-digit' })}
                         </p>
                       </div>
                     )}

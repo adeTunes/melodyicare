@@ -19,6 +19,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useVisit } from '@/lib/hooks/caregiver/useVisits'
 import { useVitalsByVisit } from '@/lib/hooks/caregiver/useVitals'
 import { updateDocument, createDocument, Timestamp } from '@/lib/firebase/firestore'
+import { formatTimestamp } from '@/lib/utils'
 import { useAuth } from '@/lib/hooks/useAuth'
 import { vitalsSchema, type VitalsFormData } from '@/lib/validations/vitals'
 
@@ -154,10 +155,7 @@ export default function CaregiverVisitDetailPage() {
               <p className='text-sm text-muted-foreground'>Clock In</p>
               <p className='font-medium'>
                 {visit.clockInTime
-                  ? visit.clockInTime.toDate().toLocaleTimeString('en-NG', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })
+                  ? formatTimestamp(visit.clockInTime, 'en-NG', { hour: '2-digit', minute: '2-digit' })
                   : '—'}
               </p>
             </div>
@@ -170,10 +168,7 @@ export default function CaregiverVisitDetailPage() {
               <p className='text-sm text-muted-foreground'>Clock Out</p>
               <p className='font-medium'>
                 {visit.clockOutTime
-                  ? visit.clockOutTime.toDate().toLocaleTimeString('en-NG', {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })
+                  ? formatTimestamp(visit.clockOutTime, 'en-NG', { hour: '2-digit', minute: '2-digit' })
                   : '—'}
               </p>
             </div>
@@ -325,7 +320,7 @@ export default function CaregiverVisitDetailPage() {
               {vitalsLogs.map((log) => (
                 <div key={log.id} className='rounded-lg border p-3 text-sm'>
                   <p className='text-xs text-muted-foreground mb-2'>
-                    {log.recordedAt.toDate().toLocaleString('en-NG')}
+                    {formatTimestamp(log.recordedAt)}
                   </p>
                   <div className='grid grid-cols-2 sm:grid-cols-3 gap-2'>
                     {log.vitals.bloodPressureSystolic && (

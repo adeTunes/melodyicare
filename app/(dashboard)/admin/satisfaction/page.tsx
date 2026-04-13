@@ -3,6 +3,7 @@
 import { Star } from 'lucide-react'
 
 import { useAllFeedback } from '@/lib/hooks/admin/useAdminData'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { StatsCard } from '@/components/shared/StatsCard'
@@ -114,7 +115,7 @@ export default function SatisfactionPage() {
                       <Star key={star} className={`size-3 ${star <= fb.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
                     ))}
                   </div>
-                  <span className='text-xs text-muted-foreground'>{fb.createdAt.toDate().toLocaleDateString('en-NG')}</span>
+                  <span className='text-xs text-muted-foreground'>{formatTimestamp(fb.createdAt)}</span>
                 </div>
                 {fb.comment && <p className='text-sm text-muted-foreground'>{fb.comment}</p>}
                 {fb.isAnonymous && <p className='text-xs text-muted-foreground italic'>Anonymous</p>}

@@ -6,6 +6,7 @@ import { Shield, Search } from 'lucide-react'
 import { useAllIncidents } from '@/lib/hooks/admin/useAdminData'
 import { updateDocument } from '@/lib/firebase/firestore'
 import { toast } from 'sonner'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingTable } from '@/components/shared/LoadingState'
@@ -98,7 +99,7 @@ export default function CompliancePage() {
                   <div className='space-y-1 flex-1'>
                     <p className='font-medium'>{incident.title}</p>
                     <p className='text-sm text-muted-foreground'>
-                      {incident.type.replace(/-/g, ' ')} &middot; {incident.createdAt.toDate().toLocaleDateString('en-NG')}
+                      {incident.type.replace(/-/g, ' ')} &middot; {formatTimestamp(incident.createdAt)}
                     </p>
                     <p className='text-sm text-muted-foreground line-clamp-2'>{incident.description}</p>
                     {incident.actionsTaken && (

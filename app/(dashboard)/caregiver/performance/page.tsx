@@ -6,6 +6,7 @@ import { useAuth } from '@/lib/hooks/useAuth'
 import { useCaregiverVisits } from '@/lib/hooks/caregiver/useVisits'
 import { useCaregiverFeedback } from '@/lib/hooks/caregiver/useFeedback'
 import { useCaregiverIncidents } from '@/lib/hooks/caregiver/useIncidents'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { StatsCard } from '@/components/shared/StatsCard'
@@ -190,7 +191,7 @@ export default function PerformancePage() {
                     ))}
                   </div>
                   <span className='text-xs text-muted-foreground'>
-                    {fb.createdAt.toDate().toLocaleDateString('en-NG')}
+                    {formatTimestamp(fb.createdAt)}
                   </span>
                 </div>
                 {fb.comment && (

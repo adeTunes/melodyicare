@@ -6,6 +6,7 @@ import { ArrowLeft, CheckCircle, Circle, Clock } from 'lucide-react'
 import { format } from 'date-fns'
 
 import { useVisit } from '@/lib/hooks/client/useVisits'
+import { safeDate } from '@/lib/utils'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingPage } from '@/components/shared/LoadingState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
@@ -87,7 +88,7 @@ export default function VisitDetailPage() {
                 <div>
                   <p className='text-xs text-muted-foreground'>Clock In</p>
                   <p className='text-sm font-medium'>
-                    {format(visit.clockInTime.toDate(), 'h:mm a')}
+                    {format(safeDate(visit.clockInTime) ?? new Date(), 'h:mm a')}
                   </p>
                 </div>
               </div>
@@ -98,7 +99,7 @@ export default function VisitDetailPage() {
                 <div>
                   <p className='text-xs text-muted-foreground'>Clock Out</p>
                   <p className='text-sm font-medium'>
-                    {format(visit.clockOutTime.toDate(), 'h:mm a')}
+                    {format(safeDate(visit.clockOutTime) ?? new Date(), 'h:mm a')}
                   </p>
                 </div>
               </div>
@@ -133,7 +134,7 @@ export default function VisitDetailPage() {
                 )}
                 {task.completedAt && (
                   <p className='text-xs text-muted-foreground'>
-                    Completed: {format(task.completedAt.toDate(), 'h:mm a')}
+                    Completed: {format(safeDate(task.completedAt) ?? new Date(), 'h:mm a')}
                   </p>
                 )}
               </div>

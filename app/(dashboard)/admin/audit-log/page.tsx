@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Activity, Search } from 'lucide-react'
 
 import { useAuditLog } from '@/lib/hooks/admin/useAdminData'
+import { formatTimestamp } from '@/lib/utils'
 
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingTable } from '@/components/shared/LoadingState'
@@ -57,7 +58,7 @@ export default function AuditLogPage() {
                   )}
                 </div>
                 <span className='text-xs text-muted-foreground whitespace-nowrap'>
-                  {entry.timestamp.toDate().toLocaleString('en-NG')}
+                  {formatTimestamp(entry.timestamp)}
                 </span>
               </CardContent>
             </Card>

@@ -6,6 +6,7 @@ import { ArrowLeft, Check, Clock } from 'lucide-react'
 import { format } from 'date-fns'
 
 import { useCareRequest } from '@/lib/hooks/client/useCareRequests'
+import { safeDate } from '@/lib/utils'
 import { PageHeader } from '@/components/layout/PageHeader'
 import { LoadingPage } from '@/components/shared/LoadingState'
 import { StatusBadge } from '@/components/shared/StatusBadge'
@@ -101,7 +102,7 @@ export default function CareRequestDetailPage() {
                     </p>
                     {historyEntry && (
                       <p className='text-xs text-muted-foreground'>
-                        {format(historyEntry.changedAt.toDate(), 'MMM d, yyyy h:mm a')}
+                        {format(safeDate(historyEntry.changedAt) ?? new Date(), 'MMM d, yyyy h:mm a')}
                         {historyEntry.note && ` — ${historyEntry.note}`}
                       </p>
                     )}
